@@ -1,19 +1,4 @@
 {
-    // Theme Setup.
-    "editor.fontLigatures": true,
-    "editor.cursorStyle": "line",
-    "editor.cursorWidth": 5,
-    "editor.cursorBlinking": "solid",
-    "editor.glyphMargin": true,
-    // MacOS Only Settings.
-    "workbench.fontAliasing": "auto",
-    "terminal.integrated.macOptionIsMeta": true,
-    // The default syntax (TextMate) highlighter classifies many tokens as variables and these are now (since VSCode 1.43) resolved into namespaces, classes, parameters, and so on. This is called Semantic highlighting support for TypeScript and JavaScript. But many themes and language extensions seem broken with single-colored syntax. This came as a surprise to me. It's set `true` by default. I recommend disabling this for now.
-    "editor.semanticHighlighting.enabled": false,
-    // SOP's Import Cost Extension Settings.
-    "importCost.largePackageColor": "#EC3A37F5",
-    "importCost.mediumPackageColor": "#B362FF",
-    "importCost.smallPackageColor": "#B362FF",
     /**
     * Better Defaults
     **/
@@ -53,7 +38,7 @@
     "git.decorations.enabled": false,
     "workbench.startupEditor": "none",
     "editor.lightbulb.enabled": true,
-    "editor.selectionHighlight": true,
+    "editor.selectionHighlight": false,
     "editor.overviewRulerBorder": false,
     "editor.renderLineHighlight": "none",
     "editor.occurrencesHighlight": false,
@@ -66,12 +51,12 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.gotoLocation.multipleImplementations": "goto",
     "editor.gotoLocation.multipleTypeDefinitions": "goto",
-    "editor.fontFamily": "MonoLisa",
+    "editor.fontFamily": "MonoLisa, Operator Mono, Victor Mono",
     "editor.fontSize": 18,
-    "editor.lineHeight": 45,
-    "editor.suggestFontSize": 15,
+    "editor.lineHeight": 28,
+    "editor.suggestFontSize": 14,
     "editor.suggestLineHeight": 28,
-    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontSize": 18,
     "terminal.integrated.lineHeight": 1.5,
 
     /**
@@ -79,20 +64,22 @@
     **/
     "search.useIgnoreFiles": false,
     "search.exclude": {
-        // Hide everything in /vendor, except the "laravel" and "livewire" folder.
-        "**/vendor/{[^l],?[^ai]}*": true,
-        // Hide everything in /public, except "index.php"
-        "**/public/{[^i],?[^n]}*": true,
-        "**/node_modules": true,
-        "**/dist": true,
+        ".phpunit.result.cache": true,
         "**/_ide_helper.php": true,
+        "**/.coverage": true,
+        "**/.rush": true,
+        "**/build": true,
+        "**/common": true,
         "**/composer.lock": true,
+        "**/coverage": true,
+        "**/dist": true,
+        "**/distribution": true,
+        "**/docs": false,
+        "**/node_modules": true,
         "**/package-lock.json": true,
-        "storage": true,
-        ".coverage": true,
-        "**/coverage.xml": true,
-        "**/.php_cs.cache": true,
-        ".phpunit.result.cache": true
+        "**/public": true,
+        "**/vendor": true,
+        "storage": true
     },
 
     /**
@@ -107,7 +94,8 @@
     },
     "files.associations": {
         ".php_cs": "php",
-        ".php_cs.dist": "php"
+        ".php_cs.dist": "php",
+        ".md.blade.php": "markdown"
     },
 
     /**
@@ -121,10 +109,6 @@
     "[php]": {
         "editor.defaultFormatter": "junstyle.php-cs-fixer"
     },
-    "php-cs-fixer.onsave": true,
-    "php-cs-fixer.showOutput": false,
-    "php-cs-fixer.autoFixByBracket": false,
-    "php-cs-fixer.rules": "@PSR2",
 
     /**
     * Prettier
@@ -139,38 +123,96 @@
     /**
     * Window Settings
     **/
-    // "window.nativeTabs": true,
+    "window.nativeTabs": false,
     "window.titleBarStyle": "native",
-    "customizeUI.titleBar": "inline",
-    "customizeUI.stylesheet": {
-        ".editor .title": "background: transparent !important;",
-        // ".editor .title .label-container": "visibility: hidden;",
-        // Hide top-right buttons
-        ".editor .title .actions-container .action-item a": "visibility: hidden;",
-        // Show top-right "settings goto icon"
-        ".editor .title .actions-container .action-item a[title=\"Open Settings (UI)\"]": "visibility: initial;",
-        ".editor .title .actions-container .action-item a[title=\"Open Settings (JSON)\"]": "visibility: initial;",
-        // Make it the "right-most" icon.
-        ".editor .title .actions-container": "flex-direction: row-reverse;",
-        // Only show the scrollbar on hover.
-        ".editor .scrollbar .slider": "visibility: hidden",
-        ".editor .scrollbar:hover .slider": "visibility: initial",
-        // Change cursor color.
-        ".monaco-editor .cursor": "background: linear-gradient(to bottom, #7f00ff, #e100ff) !important; color: #292D3E !important"
-    },
-    "files.autoSave": "onFocusChange",
     "explorer.confirmDelete": false,
-    "vsicons.presets.tsOfficial": true,
     "explorer.confirmDragAndDrop": false,
-    "window.zoomLevel": 0,
-    "[typescript]": {
+    "files.autoSave": "onFocusChange",
+    "git.ignoreMissingGitWarning": true,
+    "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[css]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
-    "editor.renderWhitespace": "all",
-    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
-    "php-cs-fixer.lastDownload": 1604920772214,
-    "workbench.colorTheme": "Monokai Pro"
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "workbench.fontAliasing": "antialiased",
+    "intelephense.environment.phpVersion": "8.0.0",
+    "extensions.ignoreRecommendations": true,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "editor.rulers": [],
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "Dracula Pro",
+    "security.workspace.trust.untrustedFiles": "open",
+    "redhat.telemetry.enabled": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "name": "italic font",
+            "scope": [
+              "comment",
+              "keyword",
+              "storage",
+              "keyword.control",
+              "keyword.control.from",
+              "keyword.control.flow",
+              "keyword.operator.new",
+              "keyword.control.import",
+              "keyword.control.export",
+              "keyword.control.default",
+              "keyword.control.trycatch",
+              "keyword.control.conditional",
+              "storage.type",
+              "storage.type.class",
+              "storage.modifier.tsx",
+              "storage.type.function",
+              "storage.modifier.async",
+              "variable.language",
+              "variable.language.this",
+              "variable.language.super",
+            //   "meta.class",
+            //   "meta.var.expr",
+              "constant.language.null",
+              "support.type.primitive",
+              "entity.name.method.js",
+              "entity.other.attribute-name",
+              "punctuation.definition.comment",
+              "text.html.basic entity.other.attribute-name",
+              "tag.decorator.js entity.name.tag.js",
+              "tag.decorator.js punctuation.definition.tag.js",
+              "source.js constant.other.object.key.js string.unquoted.label.js",
+            ],
+            "settings": {
+              "fontStyle": "italic",
+            }
+          },
+        ]
+    },
+    "editor.formatOnSave": true,
+    "editor.inlineSuggest.enabled": true
 }
